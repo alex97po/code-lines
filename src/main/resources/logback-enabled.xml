@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<configuration debug="false">
+
+    <appender name="default.file" class="ch.qos.logback.core.FileAppender">
+        <param name="file" value="log/app.log" />
+        <append>true</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level %logger{36}.%M - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="another.file" class="ch.qos.logback.core.FileAppender">
+        <param name="file" value="log/counter.log" />
+        <append>true</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level %logger{36}.%M - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.pogorelov.codelines.service.LineCounter" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="another.file" />
+    </logger>
+
+    <root>
+        <appender-ref ref="default.file" />
+    </root>
+
+</configuration>
